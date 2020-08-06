@@ -4,31 +4,45 @@ package JavaProf;
 public class Calculator {
     int a;
     int b;
+    int addResult;
+    int multiplyResult;
+    int divisionResult;
+    double powerResult;
 
-    public Calculator(int a, int b) {
+    public Calculator(int a, int b, int addResult, int multiplyResult, int divisionResult, double powerResult) {
         this.a = a;
         this.b = b;
+        this.addResult = addResult;
+        this.multiplyResult = multiplyResult;
+        this.divisionResult = divisionResult;
+        this.powerResult = powerResult;
     }
 
+
     @Test(rating = 3)
-    public void add() {
-        System.out.println(a+b);
+    public boolean add() {
+        System.out.print(a+b + " ");
+        return (a+b) == addResult;
     }
     @Test(rating = 1)
-    public void multiply(){
-        System.out.println(a*b);
+    public boolean multiply(){
+        System.out.print(a*b + " ");
+        return (a*b) == multiplyResult;
     }
     @Test(rating = 2)
-    public void division(){
+    public boolean division(){
         try {
-            System.out.println(a / b);
+            System.out.print(a / b + " ");
+            return (a/b) == divisionResult;
         } catch (ArithmeticException e) {
-            System.out.println("деление на ноль запрещено!");
+            System.out.print("деление на ноль запрещено! ");
+            return false;
         }
     }
     @Test(rating = 4)
-    public void power(){
-        System.out.println(Math.pow(a, b));
+    public boolean power(){
+        System.out.print(Math.pow(a, b) + " ");
+        return Math.abs(Math.pow(a,b) - powerResult) < 0.0001;
     }
 
 

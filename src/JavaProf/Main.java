@@ -8,7 +8,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, ClassNotFoundException {
-        start(new Calculator(3, 5));
+        start(new Calculator(3, 5, 8, 15, 0,243.0));
         start(Calc2.class.getName());
     }
 
@@ -45,7 +45,7 @@ public class Main {
         }
         for (Method method : methodList) {
             System.out.println(method.getName() + " rating " + method.getAnnotation(Test.class).rating());
-            method.invoke(o);
+            System.out.println(method.invoke(o));
         }
     }
 
@@ -82,7 +82,7 @@ public class Main {
         }
         for (Method method : methodList) {
             System.out.println(method.getName() + " rating " + method.getAnnotation(Test.class).rating());
-            method.invoke(null);
+            System.out.println(method.invoke(null));
         }
         for (Method method : methods) {
             if (method.getAnnotation(AfterSuite.class) != null) {method.invoke(null);}
